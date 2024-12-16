@@ -7,8 +7,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Getter
-@Setter
 @Builder
 @Document
 public class Customer {
