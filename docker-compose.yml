@@ -12,7 +12,6 @@ services:
       - 5432:5432
     networks:
       - microservices-net
-    restart: unless-stopped
 
   mongodb:
     container_name: ms_mongo_db
@@ -28,7 +27,6 @@ services:
   mongo-express:
     container_name: ms_mongo_express
     image: mongo-express
-    restart: always
     ports:
       - 8081:8081
     environment:
