@@ -56,4 +56,13 @@ public class CustomerService {
                 .map(mapper::fromCustomer)
                 .toList();
     }
+
+    public CustomerResponse findById(String id) {
+        var customer = customerRepository.findById(id).orElseThrow(() -> new CustomerNotFoundException("customer not found with id: " + id));
+        return mapper.fromCustomer(customer);
+    }
+
+    public void delete(String customerId) {
+        customerRepository.deleteById(customerId);
+    }
 }
