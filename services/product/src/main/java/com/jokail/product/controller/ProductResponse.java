@@ -12,7 +12,7 @@ public record ProductResponse(
         @NotNull(message = "is required")
         String description,
         @Positive(message = "should be positive")
-        double availableQuality,
+        double availableQuantity,
         @Positive(message = "should be positive")
         BigDecimal price,
         @NotNull(message = "is required")

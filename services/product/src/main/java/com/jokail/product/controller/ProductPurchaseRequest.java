@@ -7,6 +7,6 @@ public record ProductPurchaseRequest(
         @NotNull(message = "product is mandatory")
         Integer id,
         @Positive(message = "should be positive")
-        double quality
+        double quantity
 ) {
 }

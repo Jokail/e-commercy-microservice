@@ -5,8 +5,6 @@ import com.jokail.product.controller.ProductRequest;
 import com.jokail.product.controller.ProductResponse;
 import com.jokail.product.entity.Category;
 import com.jokail.product.entity.Product;
-import com.jokail.product.repository.ProductRepository;
-import jakarta.validation.constraints.Positive;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,7 +16,7 @@ public class ProductMapper {
                 .name(productRequest.name())
                 .description(productRequest.description())
                 .price(productRequest.price())
-                .availableQuality(productRequest.availableQuality())
+                .availableQuantity(productRequest.availableQuantity())
                 .category(
                         Category.builder()
                                 .id(productRequest.categoryId())
@@ -32,7 +30,7 @@ public class ProductMapper {
                 product.getId(),
                 product.getName(),
                 product.getDescription(),
-                product.getAvailableQuality(),
+                product.getAvailableQuantity(),
                 product.getPrice(),
                 product.getCategory().getId(),
                 product.getCategory().getName(),

@@ -48,13 +48,13 @@ public class ProductService {
         for (int i = 0; i < storedProducts.size(); i++) {
             var product = storedProducts.get(i);
             var productRequest = storesRequest.get(i);
-            if (product.getAvailableQuality() < productRequest.quality()) {
+            if (product.getAvailableQuantity() < productRequest.quantity()) {
                 throw new ProductPurchaseException("Insufficient stock quantity for product with id " + product.getId());
             }
-            var newAvailableQuantity = product.getAvailableQuality() - productRequest.quality();
-            product.setAvailableQuality(newAvailableQuantity);
+            var newAvailableQuantity = product.getAvailableQuantity() - productRequest.quantity();
+            product.setAvailableQuantity(newAvailableQuantity);
             productRepository.save(product);
-            purchasedProducts.add(productMapper.toProductPurchaseResponse(product, productRequest.quality()));
+            purchasedProducts.add(productMapper.toProductPurchaseResponse(product, productRequest.quantity()));
 
         }
         
