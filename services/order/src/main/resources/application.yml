@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: order-server
+  config:
+    import: configserver:http://localhost:8888
+
+
