@@ -53,8 +53,8 @@ public class OrderService {
             );
         }
 
-        // start payment process
-        
+        // todo start payment process
+
 
         // send the order confirmation --> notification-ms (kafka)
         orderProducer.sendOrderConfirmation(
