@@ -1,4 +1,4 @@
-string:
+spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/payment
     username: jokail
@@ -18,3 +18,5 @@ string:
       properties:
         spring.json.type.mapping: paymentConfirmation:com.datsenko.payment.notification.PaymentNotificationRequest
 
+server:
+  port: 8096

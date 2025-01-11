@@ -1,6 +1,7 @@
 spring:
   data:
     mongodb:
+      uri: mongodb://jokail:1234@localhost:27017/admin
       username: jokail
       password: 1234
       host: localhost

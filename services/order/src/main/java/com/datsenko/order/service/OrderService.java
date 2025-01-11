@@ -9,6 +9,8 @@ import com.datsenko.order.customer.CustomerClient;
 import com.datsenko.order.exception.BusinessException;
 import com.datsenko.order.kafka.OrderProducer;
 import com.datsenko.order.mapper.OrderMapper;
+import com.datsenko.order.payment.PaymentClient;
+import com.datsenko.order.payment.PaymentRequest;
 import com.datsenko.order.product.ProductClient;
 import com.datsenko.order.repository.OrderRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -28,6 +30,7 @@ public class OrderService {
     private final OrderMapper mapper;
     private final OrderLineService orderLineService;
     private final OrderProducer orderProducer;
+    private final PaymentClient paymentClient;
 
     public Integer create(@Valid OrderRequest request) {
 
@@ -53,8 +56,15 @@ public class OrderService {
             );
         }
 
-        // todo start payment process
-
+        // start payment process
+        var paymentRequest = new PaymentRequest(
+                request.amount(),
+                request.paymentMethod(),
+                order.getId(),
+                order.getReference(),
+                customer
+        );
+        paymentClient.requestOrderPayment(paymentRequest);
 
         // send the order confirmation --> notification-ms (kafka)
         orderProducer.sendOrderConfirmation(
